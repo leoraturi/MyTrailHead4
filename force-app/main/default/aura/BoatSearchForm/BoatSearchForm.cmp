@@ -1,0 +1,32 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId" access="global" controller="BoatData" >
+    <aura:attribute name="selectedValue" type="string" default=""></aura:attribute>
+    <aura:attribute name="showNewButton" type="boolean"></aura:attribute>
+    <aura:attribute name="options" type="List"></aura:attribute> 
+    <!--
+    <aura:registerEvent name="BoatSearch" type="c:BoatSearchEvent"/>
+-->
+    <aura:handler name="init" value="{!this}" action="{!c.init}"></aura:handler>
+    
+    <div class="c-container">       
+        <lightning:layout horizontalAlign="center" verticalAlign="end">
+            <lightning:layoutItem>
+                <lightning:select aura:id="select" name="select" label="" value="{!v.selectedValue}">
+                    <option value="">All Types</option>
+                    <aura:iteration items="{!v.options}" var="option">
+                        <option text="{!option.Name}"  value="{!option.Id}">                            
+                        </option>
+                    </aura:iteration>
+                </lightning:select>
+            </lightning:layoutItem>
+            <lightning:layoutItem class="slds-p-left_xx-small">
+                <lightning:button label="Search" title="Search" onclick="{!c.searchClick}"/>
+            </lightning:layoutItem>
+            <lightning:layoutItem class="slds-p-left_xx-small">
+                <aura:if isTrue="{!v.showNewButton}">
+                    <lightning:button variant="brand" label="New" title="New" onclick="{!c.createRecord }"/>
+                </aura:if>
+            </lightning:layoutItem>
+            
+        </lightning:layout>
+    </div>
+</aura:component>

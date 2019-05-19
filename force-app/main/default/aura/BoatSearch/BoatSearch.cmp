@@ -1,0 +1,14 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId" access="global" >
+	<aura:attribute name="selectedValue" type="string" default=""></aura:attribute>
+    <aura:attribute name="boats" type="Boat__c[]"></aura:attribute>
+    <!--
+    <aure:handler name="BoatSearch" type="c:BoatSearchEvent" action="{!c.boatSearch}"></aure:handler>
+-->
+    hello {!v.selectedValue}
+    <lightning:card  title="Find a Boat" class="cardmargin">
+        <c:BoatSearchForm selectedValue ="{!v.selectedValue}"></c:BoatSearchForm>
+    </lightning:card>
+    <lightning:card  title="Matching Boats">
+        <c:BoatSearchResults boatTypeId="{!v.selectedValue}"></c:BoatSearchResults>
+    </lightning:card>
+</aura:component>
