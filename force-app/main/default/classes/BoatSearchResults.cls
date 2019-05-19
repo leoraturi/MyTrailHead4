@@ -7,7 +7,7 @@ public class BoatSearchResults{
   if(!string.IsBlank(boatTypeId)){
   query = query + ' WHERE BoatType__c=:boatTypeId';
   }
-  system.debug('ddd');
+  system.debug('dd');
   //return null;   
  return Database.query(query);
  }
